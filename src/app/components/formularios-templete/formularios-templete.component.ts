@@ -26,6 +26,8 @@ export class FormulariosTempleteComponent implements OnInit {
     //Se ejecuta cuando entra el componente 
   }
 
+  
+
   ngOnInit() { 
      //Se ejecuta cuando css y html se terminaron de renderizar 
      this.CrearFormulario();
