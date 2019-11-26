@@ -1,0 +1,74 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1> Formularios </h1>
+        </div>
+        <div class="col-12" [formGroup]="formulario">
+            <div class="form-group">
+                <label for="">Nombre</label>
+                <input formControlName="name" type="text" class="form-control is-invalid" [ngClass]="{'is-invalid': formulario.get('name').errors && formulario.get('name').touched, 'is-valid': !formulario.get('name').errors && formulario.get('name').touched}" aria-describedby="helpId">
+                <div class="invalid-feedback d-block" *ngIf="formulario.controls.name.errors?.required && formulario.controls.name.touched">
+                    Nombre es necesario
+                </div>
+                <div class="invalid-feedback d-block" *ngIf="formulario.controls.name.errors?.minlength && formulario.controls.name.touched">
+                    Es necesario que nombre tenga por lo menos 5 digitos
+                </div>
+                <div class="invalid-feedback d-block" *ngIf="formulario.controls.name.errors?.ExisteNumero">
+                    Solo acepta letras
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label for="">Email</label>
+                <input formControlName="email" type="text" [ngClass]="{'is-invalid': formulario.get('email').errors && formulario.get('email').touched, 'is-valid': !formulario.get('email').errors}" class="form-control is-invalid" placeholder="" aria-describedby="helpId">
+                <div class="invalid-feedback d-block" *ngIf="formulario.controls.email.errors?.required && formulario.controls.email.touched">
+                    Email es necesario
+                </div>
+                <div class="invalid-feedback d-block" *ngIf="formulario.controls.email.errors?.pattern">
+                    Email es erroneo
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label for="">Mensaje</label>
+                <textarea formControlName="mensaje" class="form-control is-invalid" [ngClass]="{'is-invalid': formulario.get('mensaje').errors && formulario.get('mensaje').touched, 'is-valid': !formulario.get('mensaje').errors && formulario.get('mensaje').touched}" rows="3"></textarea>
+                <div class="invalid-feedback d-block" *ngIf="formulario.controls.mensaje.errors?.required && formulario.controls.mensaje.touched">
+                    EScribe un mensaje
+                </div>
+                <div class="invalid-feedback d-block" *ngIf="formulario.controls.mensaje.errors?.minlength && formulario.controls.mensaje.touched">
+                    Escribe un mensaje mas largo
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for=""> Ingrese contraseña</label>
+                <input formControlName="contrasena" type="password" class="form-control is-invalid" [ngClass]="{'is-invalid': formulario.get('contrasena').errors && formulario.get('contrasena').touched, 'is-valid': !formulario.get('contrasena').errors && formulario.get('contrasena').touched}"
+                    aria-describedby="helpId">
+
+                <div class="invalid-feedback d-block" *ngIf="formulario.controls.contrasena.errors?.required && formulario.controls.contrasena.touched">
+                    Escribe una contraseña
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="">Repita contraseña</label>
+                <input formControlName="password" type="password" aria-describedby="helpId" class="form-control is-invalid" [ngClass]="{'is-invalid': formulario.get('password').errors && formulario.get('password').touched, 'is-valid': !formulario.get('password').errors && formulario.get('password').touched}">
+
+                <div class="invalid-feedback d-block" *ngIf="formulario.controls.password.errors?.required && formulario.controls.contrasena.touched">
+                    Escribe la contraseña
+                </div>
+                <div class="invalid-feedback d-block" *ngIf="formulario.controls.password.errors?.noigual">
+                    Las contraseñas no coinciden
+                </div>
+            </div>
+
+
+
+            <!-- <button type="button" *ngIf="formulario.valid" (click)="VerEstadoFormulario()" class="btn btn-outline-success btn-lg btn-block">Enviar Mensaje</button> -->
+            <button type="button" (click)="VerEstadoFormulario()" class="btn btn-outline-success btn-lg btn-block">Enviar Mensaje</button>
+
+        </div>
+    </div>
+</div>
